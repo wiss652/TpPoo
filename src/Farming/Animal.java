@@ -20,20 +20,20 @@ public class Animal {
         this.healthEvents = new ArrayList<>();
     }
 
+    // Consigner un événement sanitaire
+    // Si c'est une maladie : état passe à SICK
+    // Si c'est un changement de poids : poids mis à jour automatiquement
     public void addHealthEvent(HealthEvent event) {
         healthEvents.add(event);
         if (event.getType() == HealthEventType.DISEASE) {
             this.healthStatus = EtatSante.SICK;
         }
-        System.out.println("Evenement sanitaire enregistre pour animal "
-                + id + " : " + event);
+        if (event.getType() == HealthEventType.WEIGHT_CHANGE) {
+            this.weight = event.getNewWeight(); // mise à jour automatique du poids
+        }
     }
 
-    public void updateWeight(double newWeight) {
-        this.weight = newWeight;
-        System.out.println("Poids mis a jour pour animal " + id + " : " + newWeight + " kg");
-    }
-
+    // Getters pour l'UI
     public String getId() { return id; }
     public LivestockType getType() { return type; }
     public int getAge() { return age; }

@@ -37,7 +37,7 @@ public abstract class Zone {
     // Chaque sous-classe dit combien d'entites elle a
     public abstract int getEntityCount();
 
-    // Pour l'integration avec wissal (ses capteurs)
+    // Pour l'integration avec la binome (ses capteurs)
     public abstract void addSensor(Object sensor);
 
     public String getId() { return id; }

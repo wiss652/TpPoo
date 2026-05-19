@@ -14,35 +14,30 @@ public class LivestockZone extends Zone {
         this.sensors = new ArrayList<>();
     }
 
-    public void addAnimal(Animal animal) {
-        animals.add(animal);
-        System.out.println("Animal " + animal.getId()
-                + " affecte a la zone " + getId());
+    public void addAnimal(Animal animal) { animals.add(animal); }
+
+    public Animal getAnimalById(String id) {
+        for (Animal a : animals) { if (a.getId().equals(id)) return a; }
+        return null;
     }
 
+    // Définir le programme d'alimentation
     public void setFeedingProgram(FeedingProgram program) {
         this.feedingProgram = program;
     }
 
-    public void displayFeedingProgram() {
-        if (feedingProgram == null) {
-            System.out.println("Aucun programme d'alimentation pour zone " + getId());
-        } else {
-            System.out.print("Zone " + getId() + " - ");
-            feedingProgram.display();
-        }
+    // Afficher le programme d'alimentation de la zone (retourne l'objet pour l'UI)
+    public FeedingProgram getFeedingProgram() { return feedingProgram; }
+
+    // Afficher le programme d'alimentation d'un animal spécifique par son id
+    public FeedingProgram getFeedingProgramByAnimal(String animalId) {
+        Animal a = getAnimalById(animalId);
+        if (a != null) return feedingProgram; // tous les animaux de la zone ont le même programme
+        return null;
     }
 
-    @Override
-    public int getEntityCount() {
-        return animals.size();
-    }
-
-    @Override
-    public void addSensor(Object sensor) {
-        sensors.add(sensor);
-    }
+    @Override public int getEntityCount() { return animals.size(); }
+    @Override public void addSensor(Object sensor) { sensors.add(sensor); }
 
     public List<Animal> getAnimals() { return animals; }
-    public FeedingProgram getFeedingProgram() { return feedingProgram; }
 }
