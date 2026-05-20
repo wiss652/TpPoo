@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+
+<VBox spacing="15" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.yourpackage.DashboardController">
+
+    <Label text="Sensor Dashboard" style="-fx-font-size: 20px;"/>
+
+    <TextField fx:id="sensorInput" promptText="Enter sensor value"/>
+    <Button text="Read Sensor" onAction="#onReadSensor"/>
+    <Label fx:id="outputLabel" text="Waiting for input..."/>
+
+</VBox>
